@@ -48,4 +48,10 @@ public class MyStack<T>
     {
         return (T)priList[index];
     }
+    public void Clear()
+    {
+        priList.Clear();
+
+        count = 0;
+    }
 }

@@ -19,7 +19,7 @@ public class UiManager : MonoBehaviour
         _ = GetUi("TestQ");
     }
     /// <summary>
-    /// 生成ui
+    /// 进入指定ui
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
@@ -81,7 +81,6 @@ public class UiManager : MonoBehaviour
                 uiStack.Peek().OnEnter();
             }
         }
-        return;
     }
     /// <summary>
     /// 关闭所有ui
