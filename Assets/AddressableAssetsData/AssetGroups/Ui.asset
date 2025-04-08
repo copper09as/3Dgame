@@ -17,13 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: afb456c9b84cfe6499dec987954ccd54
   m_SerializeEntries:
-  - m_GUID: 7d13919424e77c545884c0b19470bf82
-    m_Address: Assets/Prefab/Ui/TestQ
+  - m_GUID: 8c0386c4ee7a5bd45ab42842c09c15c6
+    m_Address: Assets/Prefab/Ui/RegisterPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a5523000d7a808f4cb12ac70e648bcbe
-    m_Address: Assets/Prefab/Ui/Test
+  - m_GUID: b371be95b8fe57c4ea3edc3dc6bef006
+    m_Address: Assets/Prefab/Ui/TipPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fcb3b4793b0af9148b995106190feda3
+    m_Address: Assets/Prefab/Ui/LoginPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

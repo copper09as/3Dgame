@@ -6,25 +6,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class UiManager : MonoBehaviour
+public class UiManager
 {
     MyStack<UiBase> uiStack = new MyStack<UiBase>();
     Dictionary<string, UiBase> UiDic = new Dictionary<string, UiBase>();
-    public void Test()
-    {
-        _ = GetUi("Test");
-    }
-    public void Test1()
-    {
-        _ = GetUi("TestQ");
-    }
+
     /// <summary>
     /// 进入指定ui
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public async Task<UiBase> GetUi(string name)
+    public async Task<UiBase> GetUi(string name,string tip = "")
     {
         UiBase ui = null;
 
@@ -35,7 +28,7 @@ public class UiManager : MonoBehaviour
             ui = handle.Result.GetComponent<UiBase>();
             UiDic[name] = ui;
             handle.Result.transform.SetParent(GameObject.Find("Canvas").transform);
-            handle.Result.transform.position = Vector3.zero;
+            handle.Result.transform.localPosition = Vector3.zero;
         }
         else
         {
@@ -51,7 +44,6 @@ public class UiManager : MonoBehaviour
                     uiStack.Find(uiStack.Count() - 2).OnExit();
                     ui.OnEnter();
                 }
-
             }
             else
             {
@@ -61,8 +53,11 @@ public class UiManager : MonoBehaviour
                 }
                 uiStack.Push(ui);
                 ui.OnOpen();
-
             }
+        }
+        if(tip!="")
+        {
+            ui.GetComponent<TipPanel>().tip.text = tip;
         }
         Debug.Log(uiStack.Count());
         Debug.Log(uiStack.Contains(ui));
@@ -75,7 +70,7 @@ public class UiManager : MonoBehaviour
     {
         if(uiStack.Count()>0)
         {
-            uiStack.Pop().OnClose();
+            uiStack.Pop().OnExit();
             if(uiStack.Count() > 0)
             {
                 uiStack.Peek().OnEnter();
