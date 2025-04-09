@@ -36,6 +36,8 @@ public class PlayerStateFactory
                     createState = new PlayerRun (stateMachine, animator,rb);break;
                 case playerState.Walk:
                     createState = new PlayerWalk(stateMachine, animator,rb);break;
+                case playerState.Fly:
+                    createState = new PlayerFly(stateMachine, animator, rb); break;
             }
             if (createState != null)
                 stateDic[state] = createState;

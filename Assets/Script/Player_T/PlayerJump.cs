@@ -29,7 +29,10 @@ public class PlayerJump : PlayerState
             cooldownTimer -= Time.deltaTime;
             return;
         }
-
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.TransState(playerState.Fly);
+        }
         if (stateMachine.player.IsGrounded() &&
             rb.velocity.y < 0.1f)
         {

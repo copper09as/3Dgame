@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Move(Vector3 direction)
     {
-        rb.velocity = direction;
+        rb.velocity = direction * 4;
         transform.forward = Vector3.Slerp(transform.forward, direction, turnSpeed);
     }
     void Update()

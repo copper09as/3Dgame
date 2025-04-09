@@ -4,7 +4,8 @@ public enum playerState
     Idle,
     Jump,
     Run,
-    Walk
+    Walk,
+    Fly
 }
 public abstract class PlayerState
 {
@@ -37,9 +38,10 @@ public abstract class PlayerState
 
         if (Input.GetKeyDown(KeyCode.Space) && stateMachine.player.IsGrounded())
         {
-            rb.AddForce(Vector3.up * 6f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 400f, ForceMode.Impulse);
             stateMachine.TransState(playerState.Jump);
         }
+
 
     }
     public abstract void Enter();
