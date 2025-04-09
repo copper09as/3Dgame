@@ -2034,7 +2034,7 @@ MonoBehaviour:
   groundCheckPoints:
   - {fileID: 197102861}
   isGrounded: 0
-  turnSpeed: 0.01
+  turnSpeed: 0.1
 --- !u!136 &1611855329
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2155,6 +2155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbe97460f8acd1488a82178305cdf59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectionPlane: {fileID: 0}
+  outputTexture: {fileID: 0}
+  copyCameraParamerers: 0
+  verticalOffset: 0
 --- !u!65 &1688202463
 BoxCollider:
   m_ObjectHideFlags: 0
