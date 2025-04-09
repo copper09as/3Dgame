@@ -5,25 +5,25 @@ using UnityEngine;
 public class UiBase : MonoBehaviour, ICanvasRaycastFilter
 {
     protected bool raycasting = false;
-    public void OnEnter()
+    public virtual void OnEnter()
     {
-        gameObject.transform.localScale = Vector3.one;
         raycasting = true;
+        gameObject.SetActive(true);
         Debug.Log(gameObject.name + "Enter");
     }
-    public void OnExit()
+    public virtual void OnExit()
     {
-        gameObject.transform.localScale = Vector3.zero;//≤‚ ‘œ‘ æ
         raycasting = false;
+        gameObject.SetActive(false);
         Debug.Log(gameObject.name + "Exit");
     }
-    public void OnOpen()
+    public virtual void OnOpen()
     {
         gameObject.SetActive(true);
         Debug.Log(gameObject.name + "Open");
         OnEnter();
     }
-    public void OnClose()
+    public virtual void OnClose()
     {
         gameObject.SetActive(false);
         Debug.Log(gameObject.name + "Close");

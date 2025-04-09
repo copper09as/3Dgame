@@ -66,6 +66,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         obj.transform.SetParent(transform);
 
         allOb.Add(obj.GetComponent<T>());
+
         return obj.GetComponent<T>();
     }
 }
