@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController_T : MonoBehaviour
 {
     [Header("ÒÆ¶¯²ÎÊý")]
     public float moveSpeed = 5f;

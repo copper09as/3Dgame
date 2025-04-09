@@ -8,14 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: material_0
-  m_Shader: {fileID: 4800000, guid: e207f3711d0996349a055ebb2ce7bcbc, type: 3}
-  m_Parent: {fileID: 2100000, guid: 96890cbabe4c4e949bdb21cde32af074, type: 2}
+  m_Shader: {fileID: 4800000, guid: f307f792fa7600c49a2cc4d5178d46f1, type: 3}
+  m_Parent: {fileID: 2100000, guid: 0e38382e188762d4c8e6e3be20c98e14, type: 2}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _LINESTYLE_GOLD
   - _OUTLINE_ON
   - _RAMPGGUASSIAN_ON
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
