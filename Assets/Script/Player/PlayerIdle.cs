@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerIdle : PlayerState
 {
-    public PlayerIdle(PlayerStateMachine stateMachine,Animator animator)
+    public PlayerIdle(PlayerStateMachine stateMachine,Animator animator,Rigidbody rb)
     {
         this.stateMachine = stateMachine;
         this.animator = animator;
+        this.rb = rb;
         transform = stateMachine.player.transform;
     }
     public override void Enter()
@@ -26,7 +27,7 @@ public class PlayerIdle : PlayerState
 
         if (magnitude>=0.1f)
         {
-            stateMachine.TransState(new PlayerWalk(stateMachine,animator));
+            stateMachine.TransState(playerState.Walk);
         }
     }
 }

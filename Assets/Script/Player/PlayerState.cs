@@ -1,5 +1,11 @@
 using UnityEngine;
-
+public enum playerState
+{
+    Idle,
+    Jump,
+    Run,
+    Walk
+}
 public abstract class PlayerState
 {
     protected PlayerStateMachine stateMachine;
@@ -13,17 +19,12 @@ public abstract class PlayerState
     protected float moveSpeed = 5f;
 
     protected Transform transform;
+
     public virtual void Update()
     {
-
-        if(rb==null)
-        {
-            rb = stateMachine.player.rb;
-        }
         float horizontal = Input.GetAxis("Horizontal");
 
         float vertical = Input.GetAxis("Vertical");
-
 
         Vector3 direction = stateMachine.player.transform.forward * vertical;
         direction += stateMachine.player.transform.right * horizontal;
@@ -37,7 +38,7 @@ public abstract class PlayerState
         if (Input.GetKeyDown(KeyCode.Space) && stateMachine.player.IsGrounded())
         {
             rb.AddForce(Vector3.up * 6f, ForceMode.Impulse);
-            stateMachine.TransState(new PlayerJump(stateMachine,animator));
+            stateMachine.TransState(playerState.Jump);
         }
 
     }

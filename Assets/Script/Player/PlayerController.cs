@@ -1,32 +1,33 @@
-using System;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;  // 普通行走速度
-    public float runSpeed = 10f;  // 奔跑时的速度
-    public float turnSpeed = 0.3f;
-    public Transform cameraTransform;
+    
+    [SerializeField] private Transform cameraTransform;
     [SerializeField] private CameraFollow cameraFollow;
-    public Animator animator;
-    public Rigidbody rb;
-    [SerializeField]private bool isGrounded = true;
-    private PlayerStateMachine stateMachine;
-    private Vector3 moveDirection;
-    [SerializeField] private LayerMask groundLayer; // 在Inspector中设置地面层
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckRadius = 0.2f;
-    [SerializeField] private Transform[] groundCheckPoints; // 多个检测点
+    [SerializeField] private Transform[] groundCheckPoints;
+    [SerializeField] private bool isGrounded = true;
+    [SerializeField] private float turnSpeed = 0.3f;
+    private PlayerStateMachine stateMachine;
+    private Animator animator;
+    private Rigidbody rb;
+    private Vector3 moveDirection;
     int groundedCount;
     void Start()
     {
+        Init();
+    }
+    private void Init()
+    {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        stateMachine = new PlayerStateMachine(this);
-        stateMachine.Init(new PlayerIdle(stateMachine,animator));
-
+        stateMachine = new PlayerStateMachine(this, animator, rb);
+        stateMachine.Init(playerState.Idle);
     }
-public void Move(Vector3 direction)
+    public void Move(Vector3 direction)
     {
-        rb.velocity = direction; 
+        rb.velocity = direction;
         transform.forward = Vector3.Slerp(transform.forward, direction, turnSpeed);
     }
     void Update()
@@ -34,10 +35,10 @@ public void Move(Vector3 direction)
         stateMachine.Update();
     }
     public bool IsGrounded() => isGrounded;
+    public Rigidbody GetRb() => rb;
     private void FixedUpdate()
     {
         UpdateGroundedStatus();
-        OnDrawGizmosSelected();
     }
 
     private void UpdateGroundedStatus()
@@ -61,13 +62,4 @@ public void Move(Vector3 direction)
         isGrounded = groundedCount > 0;
     }
 
-    // 可选：可视化检测点
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        foreach (var point in groundCheckPoints)
-        {
-            Gizmos.DrawWireSphere(point.position, groundCheckRadius);
-        }
-    }
 }

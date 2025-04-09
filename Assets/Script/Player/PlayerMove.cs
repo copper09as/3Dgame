@@ -5,10 +5,11 @@ using UnityEngine.InputSystem.XR;
 
 public class PlayerWalk : PlayerState
 {
-    public PlayerWalk(PlayerStateMachine stateMachine,Animator animator)
+    public PlayerWalk(PlayerStateMachine stateMachine,Animator animator,Rigidbody rb)
     {
         this.stateMachine = stateMachine;
         this.animator = animator;
+        this.rb = rb;
         transform = stateMachine.player.transform; 
     }
     public override void Enter()
@@ -26,20 +27,21 @@ public class PlayerWalk : PlayerState
         base.Update();
         if (magnitude<0.1f)
         {
-            stateMachine.TransState(new PlayerIdle(stateMachine,animator));
+            stateMachine.TransState(playerState.Idle);
         }
         if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            stateMachine.TransState(new PlayerRun(stateMachine,animator));
+            stateMachine.TransState(playerState.Run);
         }
     }
 }
 public class PlayerRun : PlayerState
 {
-    public PlayerRun(PlayerStateMachine stateMachine,Animator animator)
+    public PlayerRun(PlayerStateMachine stateMachine,Animator animator,Rigidbody rb)
     {
         this.stateMachine = stateMachine;
         this.animator = animator;
+        this.rb = rb;
         transform = stateMachine.player.transform;
     }
     public override void Enter()
@@ -58,7 +60,7 @@ public class PlayerRun : PlayerState
         base.Update();
         if (magnitude < 0.1f)
         {
-            stateMachine.TransState(new PlayerIdle(stateMachine,animator));
+            stateMachine.TransState(playerState.Idle);
         }
     }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,31 +6,28 @@ using UnityEngine;
 public class PlayerStateMachine
 {
     private PlayerState currentState;
-    public readonly PlayerController player;
     private PlayerState lastState;
-    public PlayerStateMachine(PlayerController player)
+    public readonly PlayerController player;
+    private readonly PlayerStateFactory stateFactory;
+    public PlayerStateMachine(PlayerController player,Animator animator,Rigidbody rb)
     {
         this.player = player;
+        stateFactory = new PlayerStateFactory(this, animator,rb);
     }
-    public void Init(PlayerState initState)
-    {
-        currentState = initState;
-        currentState.Enter();
-    }
+    
     public void ReturnState()
     {
-        if(currentState==null || lastState == null)
+        if(NullState())
         {
-            Debug.Log("return fail");
             return;
         }
         currentState.Exit();
         lastState.Enter();
         currentState = lastState;
     }
-
-    public void TransState(PlayerState obState)
+    public void TransState(playerState state)
     {
+        PlayerState obState = Create(state);
         if(obState == currentState)
         {
             return;
@@ -42,11 +40,9 @@ public class PlayerStateMachine
         currentState = obState;
         obState.Enter();
     }
-    public void Update()
-    {
-        if (currentState == null)
-            return;
-        currentState.Update();
-    }
+    public void Init(playerState state) => TransState(state);
+    private bool NullState() => currentState == null || lastState == null;
+    public PlayerState Create(playerState state)=> stateFactory.CreateState(state);
+    public void Update()=> currentState.Update();
 
 }
