@@ -62,6 +62,10 @@ public class PlayerRun : PlayerState
         {
             stateMachine.TransState(playerState.Idle);
         }
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            stateMachine.TransState(playerState.Walk);
+        }
     }
     }
 
