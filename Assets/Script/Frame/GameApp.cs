@@ -22,7 +22,8 @@ public class GameApp : MonoSingleTon<GameApp>
     }
     private void Start()
     {
-        _ = uiManager.GetUi("LoginPanel");
+        //_ = uiManager.GetUi("LoginPanel");
+        _ = uiManager.GetUi("TipPanel", "STTART Fish");
     }
 
 }

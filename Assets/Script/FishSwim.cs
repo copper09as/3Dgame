@@ -27,7 +27,7 @@ public class AdvancedFishMovement : MonoBehaviour
 
     // 卡住检测参数
     private Vector3 lastPosition;
-    private float stuckTime = 4f; // 卡住时间阈值
+    private float stuckTime = 2f; // 卡住时间阈值
     private float timeStuck = 0f;
 
     void Start()
