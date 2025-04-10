@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform[] groundCheckPoints;
     [SerializeField] private bool isGrounded = true;
     [SerializeField] private float turnSpeed = 0.3f;
+    [SerializeField] private GameObject flyBird;
+    [SerializeField] private float moveSpeed = 4f;
     private PlayerStateMachine stateMachine;
     private Animator animator;
     private Rigidbody rb;
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Move(Vector3 direction)
     {
-        rb.velocity = direction * 4;
+        rb.velocity = direction * moveSpeed;
         transform.forward = Vector3.Slerp(transform.forward, direction, turnSpeed);
     }
     void Update()
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded() => isGrounded;
     public Rigidbody GetRb() => rb;
+
+    public GameObject GetBird() => flyBird;
     private void FixedUpdate()
     {
         UpdateGroundedStatus();

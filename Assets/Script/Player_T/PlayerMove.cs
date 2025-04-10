@@ -46,13 +46,13 @@ public class PlayerRun : PlayerState
     }
     public override void Enter()
     {
-        moveSpeed = 10f;
+        moveSpeed = 5f;
         animator.SetBool("IsRunning", true);
     }
 
     public override void Exit()
     {
-        moveSpeed = 5f;
+        moveSpeed = 3f;
         animator.SetBool("IsRunning",false);
     }
     public override void Update()

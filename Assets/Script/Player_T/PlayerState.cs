@@ -17,7 +17,7 @@ public abstract class PlayerState
 
     protected float magnitude;
 
-    protected float moveSpeed = 5f;
+    protected float moveSpeed = 3f;
 
     protected Transform transform;
 
@@ -38,7 +38,7 @@ public abstract class PlayerState
 
         if (Input.GetKeyDown(KeyCode.Space) && stateMachine.player.IsGrounded())
         {
-            rb.AddForce(Vector3.up * 400f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 80f, ForceMode.Impulse);
             stateMachine.TransState(playerState.Jump);
         }
 
