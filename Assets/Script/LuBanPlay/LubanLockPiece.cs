@@ -2,45 +2,55 @@ using UnityEngine;
 
 public class LubanLockPiece : MonoBehaviour
 {
-    public int unlockIndex;                  // 第几顺位解锁
-    public Vector3 unlockDirection;         // 正确拖动方向（世界坐标）
-    public float requiredDistance = 0.3f;   // 拖动多远判定为取出
-    public bool isUnlocked = false;
+    private Vector3 initialPosition;
+    private bool isDragging = false;
+    public bool isUnlocked = false; // 标记是否已经解锁
 
-    private Vector3 dragStartPos;
-    private Vector3 currentOffset;
-
-    public void StartDrag(Vector3 hitPoint)
+    void Start()
     {
-        dragStartPos = hitPoint;
-        currentOffset = Vector3.zero;
+        initialPosition = transform.position;
     }
 
-    public bool TryDrag(Vector3 currentPoint, int currentUnlockStep)
+    // 开始拖动
+    public void StartDrag()
     {
-        if (isUnlocked || unlockIndex != currentUnlockStep)
-        {
-            // 不是当前该解锁的块
-            return false;
-        }
-
-        Vector3 dragVector = currentPoint - dragStartPos;
-        float dot = Vector3.Dot(dragVector.normalized, unlockDirection.normalized);
-
-        if (dot > 0.8f) // 判断拖动方向是否接近目标方向（角度<36°）
-        {
-            currentOffset = Vector3.Project(dragVector, unlockDirection);
-            transform.position += currentOffset;
-            dragStartPos = currentPoint;
-
-            // 判断是否已经解锁
-            if (currentOffset.magnitude > requiredDistance)
-            {
-                isUnlocked = true;
-                return true; // 解锁成功
-            }
-        }
-
-        return false; // 拖动方向不正确或未达到距离
+        isDragging = true;
+        // 可以添加其他拖动开始时的逻辑，比如改变颜色或材质等
     }
+
+    // 处理拖动
+    public void TryDrag(Vector3 newPosition)
+    {
+        if (isDragging)
+        {
+            transform.position = newPosition; // 拖动到新的位置
+        }
+    }
+
+    // 结束拖动
+    public void EndDrag()
+    {
+        isDragging = false;
+        // 结束拖动后检查是否放置到正确位置
+        if (IsInCorrectPosition())
+        {
+            isUnlocked = true;
+        }
+        else
+        {
+            // 如果位置错误，可以将其归回原位
+            transform.position = initialPosition;
+        }
+    }
+
+    // 检查是否放置到正确位置
+    private bool IsInCorrectPosition()
+    {
+        // 在这里根据需要判断部件的放置位置是否正确
+        // 例如通过距离、角度等来判断是否符合条件
+        // 示例：部件与正确位置的距离小于某个值则视为正确
+        return Vector3.Distance(transform.position, initialPosition) < 0.1f;
+    }
+
+    // 其他必要的逻辑...
 }

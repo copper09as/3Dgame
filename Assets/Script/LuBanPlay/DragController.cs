@@ -2,65 +2,34 @@
 
 public class DragController : MonoBehaviour
 {
-    private Camera cam;
-    private LubanLockPiece selectedPiece;
-    private int currentUnlockStep = 0; // 当前应解锁第几块
-
-    void Start()
-    {
-        cam = Camera.main;
-    }
+    private LubanLockPiece currentPiece; // 当前拖动的部件
 
     void Update()
     {
-        HandleMouseInput();
-    }
-
-    void HandleMouseInput()
-    {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-        if (Input.GetMouseButtonDown(0))
+        if (currentPiece != null)
         {
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Input.GetMouseButtonDown(0)) // 按下鼠标左键
             {
-                var piece = hit.collider.GetComponent<LubanLockPiece>();
-                if (piece != null)
-                {
-                    selectedPiece = piece;
-                    selectedPiece.StartDrag(hit.point);
-                    HighlightPiece(selectedPiece, true);
-                }
+                currentPiece.StartDrag(); // 开始拖动
             }
-        }
 
-        if (Input.GetMouseButton(0) && selectedPiece != null)
-        {
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Input.GetMouseButton(0)) // 鼠标左键按住
             {
-                bool unlocked = selectedPiece.TryDrag(hit.point, currentUnlockStep);
-                if (unlocked)
-                {
-                    currentUnlockStep++;
-                    HighlightPiece(selectedPiece, false);
-                    selectedPiece = null;
-                }
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = 0; // 确保 z 轴不变
+                currentPiece.TryDrag(mousePosition); // 尝试拖动
             }
-        }
 
-        if (Input.GetMouseButtonUp(0) && selectedPiece != null)
-        {
-            HighlightPiece(selectedPiece, false);
-            selectedPiece = null;
+            if (Input.GetMouseButtonUp(0)) // 鼠标左键松开
+            {
+                currentPiece.EndDrag(); // 结束拖动
+                currentPiece = null; // 清空当前拖动的部件
+            }
         }
     }
 
-    void HighlightPiece(LubanLockPiece piece, bool highlight)
+    public void SetCurrentPiece(LubanLockPiece piece)
     {
-        var renderer = piece.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            renderer.material.color = highlight ? Color.yellow : Color.white;
-        }
+        currentPiece = piece;
     }
 }
