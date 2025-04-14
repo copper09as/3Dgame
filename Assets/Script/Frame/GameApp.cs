@@ -35,31 +35,19 @@ public class GameApp : MonoSingleTon<GameApp>
     private void Update()
     {
         //NetManager.Update();
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.B))
         {
             _ = uiManager.GetUi("BagPanel");
         }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _ = uiManager.GetUi("LoginPanel");
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            _ = uiManager.GetUi("RegisterPanel");
-        }
+
     }    private void Start()
     {
-<<<<<<< Updated upstream
-        //_ = uiManager.GetUi("LoginPanel");
-        _ = uiManager.GetUi("TipPanel", "STTART Fish");
-=======
         //NetManager.AddEventListener(NetEvent.Close, OnConnectClose);
         //NetManager.AddMsgListener("MsgKick", OnMsgKick);
         //_ = uiManager.GetUi("LoginPanel");
          //_ = uiManager.GetUi("BagPanel");
         //_ = uiManager.GetUi("TipPanel", "Be Kick");
-        inventoryManager.RemoveItem(2, 2);
->>>>>>> Stashed changes
+        //inventoryManager.RemoveItem(2, 2);
     }
 
     private void OnMsgKick(MsgBase msgBase)

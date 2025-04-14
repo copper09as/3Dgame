@@ -18,7 +18,6 @@ public class InventoryManager
             mount = -1
         };
         itemDataList = GameApp.Instance.resManager.LoadData<ItemDataList>("Assets/So/ItemData/ItemDataListSo");
-        Debug.Log(itemDataList.itemDatas[0].name);
         Array.Fill(items,defautItem);
     }
     public ItemData FindItem(int id)
