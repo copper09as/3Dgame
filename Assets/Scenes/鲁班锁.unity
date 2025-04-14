@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heavy1: {fileID: 2082085398}
   heavy2: {fileID: 2082085401}
-  plate: {fileID: 0}
+  plate: {fileID: 1260486463}
   Center: {fileID: 429952757}
   heavy: 9.8
   speed: 1

@@ -34,32 +34,32 @@ public class RegisterPanel : UiBase
         if (msg.result==0)
         {
             Debug.Log("×¢²á³É¹¦");
-            GameApp.Instance.uiManager.PopUi();
-            _ = GameApp.Instance.uiManager.GetUi("TipPanel", "Reg Succ!");
+            GameApp.Instance.uiManager.CloseUi("RegisterPanel");
+            _ = GameApp.Instance.uiManager.GetTipUi("Reg Succ!");
             
         }
         else
         {
-            _ = GameApp.Instance.uiManager.GetUi("TipPanel", "Reg Fail!");
+            _ = GameApp.Instance.uiManager.GetTipUi("Reg Fail!");
         }
 
     }
 
     private void OnCloseClick()
     {
-        GameApp.Instance.uiManager.PopUi();
+        GameApp.Instance.uiManager.CloseUi("RegisterPanel");
     }
 
     private void OnRegClick()
     {
         if (idInput.text == "" || pwInput.text == "")
         {
-            _ = GameApp.Instance.uiManager.GetUi("TipPanel", "pw or id is empty! ");
+            _ = GameApp.Instance.uiManager.GetTipUi("pw or id is empty! ");
             return;
         }
         if(pwInput.text != repInput.text)
         {
-            _ = GameApp.Instance.uiManager.GetUi("TipPanel", "pw shoule equal repw! ");
+            _ = GameApp.Instance.uiManager.GetTipUi("pw shoule equal repw! ");
             return;
         }
         MsgRegister msgReg = new MsgRegister();

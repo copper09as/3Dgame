@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using UnityEditor.Build.Pipeline;
+using UnityEngine;
 
 public class MyStack<T>
 {
@@ -6,6 +8,10 @@ public class MyStack<T>
     private int count;
     public int Count()
     {
+        foreach (var i in priList)
+        {
+            Debug.LogWarning(i);
+        }
         return count;
     }
     public MyStack(int InitCap = 0)
@@ -27,10 +33,12 @@ public class MyStack<T>
     }
     public T Peek()
     {
+
         return priList[count - 1];
     }
     public bool Contains(T ob)
     {
+
         return priList.Contains(ob);
     }
     public bool SetLast(T ob)
@@ -39,9 +47,10 @@ public class MyStack<T>
             return false;
         if (ob.Equals(Peek()))
             return false;
+        Debug.Log(ob);
         priList.Remove(ob);
-        count -= 1;
         Push(ob);
+        Debug.LogWarning(Peek());
         return true;
     }
     public T Find(int index)
@@ -53,5 +62,16 @@ public class MyStack<T>
         priList.Clear();
 
         count = 0;
+    }
+    public bool Remove(T ob)
+    {
+        if(priList.Contains(ob))
+        {
+            count -= 1;
+            priList.Remove(ob);
+            return true;
+        }
+        return false;
+
     }
 }

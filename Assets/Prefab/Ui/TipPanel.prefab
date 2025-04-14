@@ -555,5 +555,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81942bb056f7a04a8df594df75472ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CloseBtn: {fileID: 4474650996004154074}
+  closeBtn: {fileID: 4474650996004154074}
   tip: {fileID: 8209174447148501546}
