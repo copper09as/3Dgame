@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Small Crate_diffuse
-  m_Shader: {fileID: 4800000, guid: f307f792fa7600c49a2cc4d5178d46f1, type: 3}
-  m_Parent: {fileID: 2100000, guid: f1d56bcd5e86848438702de0a6134b5b, type: 2}
+  m_Shader: {fileID: 4800000, guid: 9c9c9898a773a66498ace8f425a58a45, type: 3}
+  m_Parent: {fileID: 2100000, guid: d34dcdb083211b54fa9337a5f7ca9c40, type: 2}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords: []
   m_InvalidKeywords:
