@@ -17,6 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: afb456c9b84cfe6499dec987954ccd54
   m_SerializeEntries:
+  - m_GUID: 03aa7ab79acf32e4c9f02abb42419725
+    m_Address: Assets/Prefab/Ui/BagTipPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67ef4c75c4b91bb439db92278ca13126
+    m_Address: Assets/Prefab/Ui/Slot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c0386c4ee7a5bd45ab42842c09c15c6
     m_Address: Assets/Prefab/Ui/RegisterPanel
     m_ReadOnly: 0
@@ -24,6 +34,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b371be95b8fe57c4ea3edc3dc6bef006
     m_Address: Assets/Prefab/Ui/TipPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b55f597b364b956458a443d4bcea5846
+    m_Address: Assets/Prefab/Ui/BagPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
