@@ -37,7 +37,7 @@ public class GameApp : MonoSingleTon<GameApp>
         //NetManager.Update();
         if(Input.GetKeyDown(KeyCode.B))
         {
-            _ = uiManager.GetUi("BagPanel");
+            _ = uiManager.GetUi("FishUiPanel");
         }
 
     }    private void Start()

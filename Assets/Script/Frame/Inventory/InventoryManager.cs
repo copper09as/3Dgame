@@ -8,6 +8,7 @@ public class InventoryManager
     public ItemId[] items;
     private ItemId defautItem;
     private Dictionary<int, ItemData> itemDataDic;
+
     public InventoryManager(int cap = 50)
     {
         items = new ItemId[cap];

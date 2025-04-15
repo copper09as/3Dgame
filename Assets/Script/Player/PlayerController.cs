@@ -5,17 +5,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private CameraFollow cameraFollow;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask waterLayer;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private Transform[] groundCheckPoints;
     [SerializeField] private bool isGrounded = true;
     [SerializeField] private float turnSpeed = 0.3f;
     [SerializeField] private GameObject flyBird;
     [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private bool isWater = false;
     private PlayerStateMachine stateMachine;
     private Animator animator;
     private Rigidbody rb;
     private Vector3 moveDirection;
     int groundedCount;
+    int waterCount;
     void Start()
     {
         Init();
@@ -44,11 +47,24 @@ public class PlayerController : MonoBehaviour
     {
         UpdateGroundedStatus();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Water")
+        {
+            isWater = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Water")
+        {
+            isWater = false;
+        }
+    }
     private void UpdateGroundedStatus()
     {
         groundedCount = 0;
-
+        waterCount = 0;
         foreach (var point in groundCheckPoints)
         {
             Collider[] colliders = Physics.OverlapSphere(
@@ -62,7 +78,6 @@ public class PlayerController : MonoBehaviour
                 groundedCount++;
             }
         }
-
         isGrounded = groundedCount > 0;
     }
 
