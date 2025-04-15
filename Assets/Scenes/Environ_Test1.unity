@@ -4036,7 +4036,7 @@ GameObject:
   - component: {fileID: 1139361128}
   m_Layer: 0
   m_Name: SwimField
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4071,12 +4071,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.97, y: 1.21, z: 4.65}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 13.8659115, y: 6.6396985, z: 11.186886}
+  m_Center: {x: 1.7569723, y: 2.7148492, z: 3.2684443}
 --- !u!1 &1159113491 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7280503669003103243, guid: 04b44d328cc3e0e478ca76ac5a421281, type: 3}
@@ -4863,15 +4863,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 120.64
+      value: 38.1
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 118.78
+      value: 86.2
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 168.65
+      value: 132.3
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4908,6 +4908,10 @@ PrefabInstance:
     - target: {fileID: 3700822832334520661, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044326147997284969, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
+      propertyPath: turnSpeed
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7583,6 +7587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c16426279a8d04f8174e955c15769e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData:
+    items: []
 --- !u!1001 &1845328743
 PrefabInstance:
   m_ObjectHideFlags: 0

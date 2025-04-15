@@ -7,7 +7,7 @@ public class FishUiPanel : UiBase
     [SerializeField]float powProcess;
     [SerializeField]float rotProcess;
     private ItemDataList fishDataList;
-    [SerializeField]private int fishSpeed;
+    [SerializeField]private float fishSpeed;
     FishState state = FishState.pow;
     public override void OnOpen()
     {
@@ -16,10 +16,12 @@ public class FishUiPanel : UiBase
     public override void OnEnter()
     {
         base.OnEnter();
-        fishSpeed = Random.Range(1, 5);
+        fishSpeed = Random.Range(0.5f, 1.5f);
         powProcess = 0f;
         rotProcess = 0f;
         state = FishState.pow;
+        rotBar.UpdateSliderBar(1f, rotProcess);
+        powBar.UpdateSliderBar(1f, rotProcess);
     }
     private void OnPow()
     {
@@ -70,6 +72,8 @@ public class FishUiPanel : UiBase
         float rotScore = Mathf.Abs(rotProcess - 0.5f);
         float powScore = Mathf.Abs(powProcess - 0.5f);
         int score = (int)(fishSpeed * 100) - (int)Mathf.Abs(rotScore * 100) - (int)Mathf.Abs(powScore * 100);
+        GameApp.Instance.uiManager.CloseUi("FishUiPanel");
+        GameApp.Instance.eventCenter.TrigNormalListener("FishOver");
         if (rotScore<0.07f)
             if(powScore < 0.07f)
             {
@@ -77,9 +81,6 @@ public class FishUiPanel : UiBase
                 return;
             }
         _ = GameApp.Instance.uiManager.GetTipUi("FishFail" + score.ToString());
-        GameApp.Instance.uiManager.CloseUi("FishUiPanel");
-
-
     }
     private enum FishState
     {

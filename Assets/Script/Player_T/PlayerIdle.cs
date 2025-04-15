@@ -29,5 +29,9 @@ public class PlayerIdle : PlayerState
         {
             stateMachine.TransState(playerState.Walk);
         }
+        if(Input.GetKeyDown(KeyCode.Delete) && stateMachine.player.IsFish())
+        {
+            stateMachine.TransState(playerState.Fish);
+        }
     }
 }

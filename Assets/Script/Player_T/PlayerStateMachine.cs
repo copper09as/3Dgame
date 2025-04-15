@@ -40,6 +40,7 @@ public class PlayerStateMachine
         currentState = obState;
         obState.Enter();
     }
+
     public void Init(playerState state) => TransState(state);
     private bool NullState() => currentState == null || lastState == null;
     public PlayerState Create(playerState state)=> stateFactory.CreateState(state);

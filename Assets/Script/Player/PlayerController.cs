@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded() => isGrounded;
     public Rigidbody GetRb() => rb;
-
+    public bool IsFish() => isWater;
     public GameObject GetBird() => flyBird;
     private void FixedUpdate()
     {
@@ -49,14 +49,14 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Water")
+        if(other.tag == "Fish")
         {
             isWater = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Water")
+        if (other.tag == "Fish")
         {
             isWater = false;
         }

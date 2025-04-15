@@ -38,6 +38,8 @@ public class PlayerStateFactory
                     createState = new PlayerWalk(stateMachine, animator,rb);break;
                 case playerState.Fly:
                     createState = new PlayerFly(stateMachine, animator, rb); break;
+                case playerState.Fish:
+                    createState = new PlayerFish(stateMachine, animator, rb);break;
             }
             if (createState != null)
                 stateDic[state] = createState;

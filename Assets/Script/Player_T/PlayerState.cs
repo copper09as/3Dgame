@@ -5,7 +5,8 @@ public enum playerState
     Jump,
     Run,
     Walk,
-    Fly
+    Fly,
+    Fish
 }
 public abstract class PlayerState
 {
