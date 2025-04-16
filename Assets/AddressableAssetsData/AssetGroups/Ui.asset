@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56efabb34b6ddef41bf84c0e2b2d680d
+    m_Address: Assets/Prefab/Ui/TaskSlot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 67ef4c75c4b91bb439db92278ca13126
     m_Address: Assets/Prefab/Ui/Slot
     m_ReadOnly: 0
@@ -39,6 +44,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b55f597b364b956458a443d4bcea5846
     m_Address: Assets/Prefab/Ui/BagPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e09bccb96c3da134aae37b4233ce2c70
+    m_Address: Assets/Prefab/Ui/TaskPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
