@@ -1355,6 +1355,7 @@ GameObject:
   - component: {fileID: 1314278134}
   - component: {fileID: 1314278132}
   - component: {fileID: 1314278137}
+  - component: {fileID: 1314278138}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1502,6 +1503,27 @@ MonoBehaviour:
   heightAdjustmentSpeed: 0.5
   minHeightOffset: 1
   maxHeightOffset: 5
+--- !u!114 &1314278138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314278131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c16426279a8d04f8174e955c15769e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    items: []
+  playerData:
+    turnSpeed: 0.3
+    moveSpeed: 15
+    runSpeed: 25
+    jumpHight: 50
+    flyGravity: 60
+    Gravity: 300
 --- !u!1001 &1367890567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1512,15 +1534,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.13
+      value: 108.9
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 92.24
+      value: 88.15
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 143.6
+      value: 102.5
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1562,6 +1584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8044326147997284969, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1314278136}
     - target: {fileID: 9166308046800284381, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -1574,9 +1600,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 197102861}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2664834646368713131, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1611855328}
     - targetCorrespondingSourceObject: {fileID: 2664834646368713131, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1611855329}
@@ -2017,28 +2040,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2664834646368713131, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
   m_PrefabInstance: {fileID: 1367890567}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1611855328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611855323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6b592ba07f9e84d977f08319c31a8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
-  cameraFollow: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheckRadius: 0.2
-  groundCheckPoints:
-  - {fileID: 197102861}
-  isGrounded: 0
-  turnSpeed: 0.1
 --- !u!136 &1611855329
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2182,8 +2183,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 50, y: 0, z: 50}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 202.61536, y: 8.619806, z: 186.08752}
+  m_Center: {x: 29.410805, y: -4.309903, z: -5.1482687}
 --- !u!1 &1792258682
 GameObject:
   m_ObjectHideFlags: 0

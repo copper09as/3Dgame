@@ -9,9 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private Transform[] groundCheckPoints;
     [SerializeField] private bool isGrounded = true;
-    [SerializeField] private float turnSpeed = 0.3f;
     [SerializeField] private GameObject flyBird;
-    [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private bool isWater = false;
     private PlayerStateMachine stateMachine;
     private Animator animator;
@@ -32,13 +30,14 @@ public class PlayerController : MonoBehaviour
     }
     public void Move(Vector3 direction)
     {
-        rb.velocity = direction * moveSpeed;
-        transform.forward = Vector3.Slerp(transform.forward, direction, turnSpeed);
+        rb.velocity = direction;
+        transform.forward = Vector3.Slerp(transform.forward, direction,GameApp.Instance.playerData.turnSpeed);
     }
     void Update()
     {
         stateMachine.Update();
     }
+    public bool inWater = false;
     public bool IsGrounded() => isGrounded;
     public Rigidbody GetRb() => rb;
     public bool IsFish() => isWater;
@@ -47,11 +46,16 @@ public class PlayerController : MonoBehaviour
     {
         UpdateGroundedStatus();
     }
+    public bool IsInWater() => inWater;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Fish")
         {
             isWater = true;
+        }
+        if(other.tag == "Water")
+        {
+            inWater = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -59,6 +63,10 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Fish")
         {
             isWater = false;
+        }
+        if (other.tag == "Water")
+        {
+            inWater = false;
         }
     }
     private void UpdateGroundedStatus()

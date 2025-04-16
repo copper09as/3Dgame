@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public class GameApp : MonoSingleTon<GameApp>
@@ -13,6 +14,7 @@ public class GameApp : MonoSingleTon<GameApp>
     public EventCenter eventCenter;
     public GameData gameData;
     public TaskManager taskManager;
+    public PlayerData playerData;
     protected override void Awake()
     {
         base.Awake();
@@ -44,10 +46,11 @@ public class GameApp : MonoSingleTon<GameApp>
             isOver = false
 
         };
+        inventoryManager.AddItem(3,1);
         taskManager.AddTask(task1);
         taskManager.AddTask(task2);
         taskManager.AddTask(task3);
-        LoadData();
+        //LoadData();
 
     }
     private void LoadData()

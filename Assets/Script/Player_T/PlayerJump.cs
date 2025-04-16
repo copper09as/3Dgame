@@ -4,7 +4,7 @@ public class PlayerJump : PlayerState
 {
     private float jumpCooldown = 0.1f;
     private float cooldownTimer;
-    public PlayerJump(PlayerStateMachine stateMachine, Animator animator,Rigidbody rb)
+    public PlayerJump(PlayerStateMachine stateMachine, Animator animator, Rigidbody rb)
     {
         this.stateMachine = stateMachine;
         this.animator = animator;
@@ -29,9 +29,10 @@ public class PlayerJump : PlayerState
             cooldownTimer -= Time.deltaTime;
             return;
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && GameApp.Instance.inventoryManager.ContainsItem(3))
         {
             stateMachine.TransState(playerState.Fly);
+
         }
         if (stateMachine.player.IsGrounded() &&
             rb.velocity.y < 0.1f)

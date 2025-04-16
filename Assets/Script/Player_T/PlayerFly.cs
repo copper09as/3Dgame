@@ -13,14 +13,14 @@ public class PlayerFly : PlayerState
     }
     public override void Enter()
     {
-        Physics.gravity = new Vector3(0, -100f, 0);
+        Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.flyGravity, 0);
         stateMachine.player.GetBird().SetActive(true);
         animator.SetBool("IsFlying", true);
     }
 
     public override void Exit()
     {
-        Physics.gravity = new Vector3(0, -500f, 0);
+        Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.Gravity, 0);
         stateMachine.player.GetBird().SetActive(false);
         animator.SetBool("IsFlying", false);
     }

@@ -6,7 +6,8 @@ public enum playerState
     Run,
     Walk,
     Fly,
-    Fish
+    Fish,
+    Swim
 }
 public abstract class PlayerState
 {
@@ -18,7 +19,7 @@ public abstract class PlayerState
 
     protected float magnitude;
 
-    protected float moveSpeed = 3f;
+    protected float moveSpeed = GameApp.Instance.playerData.moveSpeed;
 
     protected Transform transform;
 
@@ -39,10 +40,14 @@ public abstract class PlayerState
 
         if (Input.GetKeyDown(KeyCode.Space) && stateMachine.player.IsGrounded())
         {
-            rb.AddForce(Vector3.up * 80f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * GameApp.Instance.playerData.jumpHight, ForceMode.Impulse);
             stateMachine.TransState(playerState.Jump);
         }
-
+        if (stateMachine.player.IsInWater())
+        {
+            stateMachine.TransState(playerState.Idle);
+            stateMachine.TransState(playerState.Swim);
+        }
 
     }
     public abstract void Enter();
