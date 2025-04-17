@@ -47,7 +47,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Pow: 10
-    - _Range: 10
+    - _Range: 4.47
     - _SaturationBoost: 1.2
     - _Thred: 0.05
     m_Colors: []

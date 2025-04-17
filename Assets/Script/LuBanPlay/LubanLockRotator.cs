@@ -1,36 +1,23 @@
+// RotateLock.cs
 using UnityEngine;
 
-public class LubanLockRotator : MonoBehaviour
+public class RotateLock : MonoBehaviour
 {
-    public float rotationSpeed = 200f;
-
-    private bool isRotating = false;
-    private Vector3 lastMousePosition;
+    public float rotationSpeed = 5f;
+    private Vector3 lastMousePos;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1)) // 右键按下
         {
-            isRotating = true;
-            lastMousePosition = Input.mousePosition;
+            lastMousePos = Input.mousePosition;
         }
-
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButton(1))
         {
-            isRotating = false;
-        }
-
-        if (isRotating)
-        {
-            Vector3 delta = Input.mousePosition - lastMousePosition;
-            float rotX = delta.y * rotationSpeed * Time.deltaTime;
-            float rotY = -delta.x * rotationSpeed * Time.deltaTime;
-
-            // 旋转自身
-            transform.Rotate(Vector3.right, rotX, Space.World);
-            transform.Rotate(Vector3.up, rotY, Space.World);
-
-            lastMousePosition = Input.mousePosition;
+            Vector3 delta = Input.mousePosition - lastMousePos;
+            transform.Rotate(Vector3.up, delta.x * rotationSpeed * Time.deltaTime, Space.World);
+            transform.Rotate(Vector3.right, -delta.y * rotationSpeed * Time.deltaTime, Space.World);
+            lastMousePos = Input.mousePosition;
         }
     }
 }

@@ -32,6 +32,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ed0b8ba4625cfb4b84d09215dacef54
+    m_Address: Assets/Prefab/Ui/DialogButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c0386c4ee7a5bd45ab42842c09c15c6
     m_Address: Assets/Prefab/Ui/RegisterPanel
     m_ReadOnly: 0

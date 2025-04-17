@@ -29,6 +29,15 @@ public class InventoryManager
         }
         return itemDataDic[id];
     }
+    public bool ContainsItem(int id)
+    {
+        foreach(var i in items)
+        {
+            if (i.id == id)
+                return true;
+        }
+        return false;
+    }
     public bool AddItem(int id, int mount)
     {
         int index = Array.FindIndex(items, i => i.id == id);
