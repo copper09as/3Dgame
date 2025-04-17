@@ -1,9 +1,8 @@
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 public class PlayerController : MonoBehaviour
 {
     
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private CameraFollow cameraFollow;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask waterLayer;
     [SerializeField] private float groundCheckRadius = 0.2f;
@@ -17,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection;
     int groundedCount;
     int waterCount;
+    float vertical;
+    float horizontal;
     void Start()
     {
         Init();
@@ -31,10 +32,13 @@ public class PlayerController : MonoBehaviour
     public void Move(Vector3 direction)
     {
         rb.velocity = direction;
-        transform.forward = Vector3.Slerp(transform.forward, direction,GameApp.Instance.playerData.turnSpeed);
+        if(vertical >= 0 && horizontal != 0)
+            transform.forward = Vector3.Slerp(transform.forward, direction,GameApp.Instance.playerData.turnSpeed);
     }
     void Update()
     {
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
         stateMachine.Update();
     }
     public bool inWater = false;
