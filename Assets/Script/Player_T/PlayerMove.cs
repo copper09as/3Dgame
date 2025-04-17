@@ -47,12 +47,14 @@ public class PlayerRun : PlayerState
     public override void Enter()
     {
         moveSpeed = GameApp.Instance.playerData.runSpeed;
+        GameApp.Instance.playerData.turnSpeed = 0.09f;
         animator.SetBool("IsRunning", true);
     }
 
     public override void Exit()
     {
         moveSpeed = GameApp.Instance.playerData.moveSpeed;
+        GameApp.Instance.playerData.turnSpeed = 0.04f;
         animator.SetBool("IsRunning",false);
     }
     public override void Update()

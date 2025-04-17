@@ -6695,7 +6695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 209.74
+      value: 91.21
       objectReference: {fileID: 0}
     - target: {fileID: 1848081688624901150, guid: 1a6257d11e1ac3549b1e795546390a3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9866,8 +9866,8 @@ MonoBehaviour:
     items: []
   playerData:
     turnSpeed: 0.3
-    moveSpeed: 3
-    runSpeed: 5
+    moveSpeed: 15
+    runSpeed: 25
     jumpHight: 50
     flyGravity: 100
     Gravity: 300
