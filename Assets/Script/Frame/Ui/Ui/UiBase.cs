@@ -27,6 +27,7 @@ public abstract class UiBase : MonoBehaviour, ICanvasRaycastFilter
     }
     public virtual void OnOpen()
     {
+        Debug.Log(gameObject.name);
         gameObject.SetActive(true);
         Debug.Log(gameObject.name + "Open");
         OnEnter();

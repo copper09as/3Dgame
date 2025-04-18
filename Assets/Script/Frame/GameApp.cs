@@ -46,6 +46,8 @@ public class GameApp : MonoSingleTon<GameApp>
             isOver = false
 
         };
+        inventoryManager.AddItem(1, 1);
+        inventoryManager.AddItem(2, 1);
         inventoryManager.AddItem(3,1);
         taskManager.AddTask(task1);
         taskManager.AddTask(task2);
@@ -53,6 +55,7 @@ public class GameApp : MonoSingleTon<GameApp>
         //LoadData();
 
     }
+   
     private void LoadData()
     {
         var gameData = GameSave.LoadByJson<GameData>("GameData.json");
@@ -66,11 +69,11 @@ public class GameApp : MonoSingleTon<GameApp>
         //NetManager.Update();
         if(Input.GetKeyDown(KeyCode.B))
         {
-            _ = uiManager.GetUi("TaskPanel");
-        }
-        if(Input.GetMouseButtonDown(1))
+            _ = uiManager.GetUi("BagPanel");
+        }        //NetManager.Update();
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            taskManager.FinishTask("Hello mskj");
+            _ = uiManager.GetUi("AddPanel");
         }
 
 

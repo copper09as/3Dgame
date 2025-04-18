@@ -21,6 +21,15 @@ public class InventoryManager
         itemDataList = GameApp.Instance.resManager.LoadData<ItemDataList>("Assets/So/ItemData/ItemDataListSo");
         Array.Fill(items,defautItem);
     }
+    public int ItemCount(int id)
+    {
+        foreach (var i in items)
+        {
+            if (i.id == id)
+                return i.mount;
+        }
+        return 0;
+    }
     public ItemData FindItem(int id)
     {
         if (!itemDataDic.ContainsKey(id))

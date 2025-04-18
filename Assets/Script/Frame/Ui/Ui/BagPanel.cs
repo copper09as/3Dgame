@@ -49,6 +49,7 @@ public class BagPanel : UiBase
         maxPage = items.Length / perMount;
         CreateSlot();
     }
+
     public override void OnOpen()
     {
         base.OnOpen();
@@ -72,6 +73,10 @@ public class BagPanel : UiBase
         closeBtn.onClick.RemoveListener(OnCloseClick);
         GameApp.Instance.eventCenter.RemoveNormalListener("UpdateUi", UpdateSlot);
         BagSlot.inDrag = false;
+        foreach(var slot in slots)
+        {
+            slot.Clear();
+        }
         GameApp.Instance.uiManager.CloseUi("BagTipPanel");
         GameApp.Instance.uiManager.CloseUi("ItemDragPanel");
         inEnter = false;

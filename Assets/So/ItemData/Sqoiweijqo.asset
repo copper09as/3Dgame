@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83574d48cce783b42952f8f0729708b1, type: 3}
-  m_Name: Default
+  m_Name: Sqoiweijqo
   m_EditorClassIdentifier: 
-  itemName: null
-  image: {fileID: 21300000, guid: 0c5b4db73b582b14cbc6e596144b2c88, type: 3}
-  isStack: 0
-  canSold: 0
+  itemName: qqqq
+  image: {fileID: 21300000, guid: 93fbbf8b2a2768045b723985c3120c85, type: 3}
+  isStack: 1
+  canSold: 1
   price: 0
-  id: -1
-  description: null
+  id: 4
+  description: fl2

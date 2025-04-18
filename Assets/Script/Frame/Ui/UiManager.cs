@@ -33,7 +33,8 @@ public class UiManager
         }
         if(ui.isActive)
         {
-            Debug.LogWarning("Un active " + ui);
+            ui.isActive = false;
+            CloseUi(name);
             return ui;
         }
         if (ui != null)

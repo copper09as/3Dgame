@@ -52,6 +52,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd15ea5b19a17c5478eda11655b74b90
+    m_Address: Assets/Prefab/Ui/AddPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e09bccb96c3da134aae37b4233ce2c70
     m_Address: Assets/Prefab/Ui/TaskPanel
     m_ReadOnly: 0

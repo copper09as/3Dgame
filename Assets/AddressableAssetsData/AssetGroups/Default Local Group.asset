@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0c1d1a7993cc654b94e7dff2c3d3bc3
+    m_Address: Assets/Prefab/Ui/ItemDragPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c43ce07df27592742983623caeb91ac4, type: 2}
   m_SchemaSet:
