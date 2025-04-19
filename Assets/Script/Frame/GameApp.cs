@@ -26,33 +26,9 @@ public class GameApp : MonoSingleTon<GameApp>
         inventoryManager = new InventoryManager(56);
         eventCenter = new EventCenter();
         taskManager = new TaskManager();
-        TaskData task1 = new TaskData()
-        {
-            name = "Hello hhy",
-            description = "Fish!",
-            isOver = false
-
-        };
-        TaskData task2 = new TaskData()
-        {
-            name = "Hello mskj",
-            description = "Fly",
-            isOver = false
-
-        }; 
-        TaskData task3 = new TaskData()
-        {
-            name = "Hello ljh",
-            description = "dead",
-            isOver = false
-
-        };
         inventoryManager.AddItem(1, 1);
         inventoryManager.AddItem(2, 1);
         inventoryManager.AddItem(3,1);
-        taskManager.AddTask(task1);
-        taskManager.AddTask(task2);
-        taskManager.AddTask(task3);
         //LoadData();
 
     }
@@ -75,6 +51,10 @@ public class GameApp : MonoSingleTon<GameApp>
         if (Input.GetKeyDown(KeyCode.P))
         {
             _ = uiManager.GetUi("AddPanel");
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            _ = uiManager.GetUi("TaskPanel");
         }
 
 

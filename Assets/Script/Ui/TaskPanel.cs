@@ -25,6 +25,11 @@ public class TaskPanel : UiBase
     {
         base.OnExit();
         GameApp.Instance.eventCenter.RemoveNormalListener("UpdateTaskUi", UpdateTask);
+        foreach(var slot in slots)
+        {
+            Destroy(slot.gameObject);
+        }
+        slots.Clear();
     }
     public void UpdateTask()
     {

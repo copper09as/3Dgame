@@ -17,6 +17,10 @@ public class TaskManager
     public void FinishTask(string name)
     {
         var i = taskDatas.FindIndex(i=>i.name == name);
+        if(i<0)
+        {
+            Debug.LogError("no this task" + name);
+        }
         taskDatas[i].isOver = true;
         GameApp.Instance.eventCenter.TrigNormalListener("UpdateTaskUi");
     }
