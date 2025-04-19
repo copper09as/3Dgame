@@ -1,25 +1,28 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
+using System.Collections;
 
 public class LubanPart : MonoBehaviour
 {
-    public int unlockOrder = 1;                    // Ω‚À¯À≥–Ú
-    public Vector3 correctDirection = Vector3.up;  // ’˝»∑Õœ∂Ø∑ΩœÚ£®µ•ŒªœÚ¡ø£©
-    public float unlockDistance = 1.5f;            // Õœ∂ØΩ‚À¯æ‡¿Î
+    public int unlockOrder = 1;
+    public Vector3 correctDirection = Vector3.up;
+    public float unlockDistance = 1.5f;
     public bool isUnlocked = false;
+    public float additionalDistance = 0.5f;
 
     private Vector3 startMousePos;
     private Vector3 startObjPos;
     private bool isDragging = false;
-
-    private static int currentUnlockOrder = 1;     // µ±«∞Ω‚À¯À≥–Ú£®æ≤Ã¨£©
-
+    private static int currentUnlockOrder = 1;
     private Renderer rend;
     private Color originalColor;
-    public float additionalDistance = 0.5f;      // Ω‚À¯∫Û∂ÓÕ‚“∆∂Øµƒæ‡¿Î
-    private float moveSpeed = 5f;                 // ∆Ωª¨“∆∂ØµƒÀŸ∂»
+    private float moveSpeed = 20f;
+    public Vector3 originalPosition;
+
+    public System.Action OnReturnedToOrigin;
 
     void Start()
     {
+        originalPosition = transform.localPosition; // ‰øÆÊîπ‰∏∫Êú¨Âú∞ÂùêÊ†á
         rend = GetComponent<Renderer>();
         if (rend != null)
             originalColor = rend.material.color;
@@ -37,13 +40,19 @@ public class LubanPart : MonoBehaviour
     {
         if (!isDragging || isUnlocked) return;
 
+        if (unlockOrder != currentUnlockOrder)
+        {
+            StartCoroutine(ShakeFeedback());
+            ShowErrorColor();
+            return;
+        }
+
         Vector3 delta = Input.mousePosition - startMousePos;
-        Vector3 worldDelta = Camera.main.ScreenToWorldPoint(new Vector3(delta.x, delta.y, 10f)) - Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10f));
+        Vector3 worldDelta = Camera.main.ScreenToWorldPoint(new Vector3(delta.x, delta.y, 10f)) -
+                           Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10f));
 
         float dot = Vector3.Dot(worldDelta.normalized, correctDirection);
-        float tolerance = 0.5f; // »›¥ÌΩ«∂»
-
-        if (dot < tolerance)
+        if (dot < 0.5f)
         {
             StartCoroutine(ShakeFeedback());
             ShowErrorColor();
@@ -57,9 +66,9 @@ public class LubanPart : MonoBehaviour
             isUnlocked = true;
             currentUnlockOrder++;
             ResetColor();
-            // ∆Ωª¨“∆∂Ø£¨—ÿ◊≈’˝»∑∑ΩœÚ‘ŸÕ∆“∆“ª–©
             StartCoroutine(MoveInDirection(correctDirection, unlockDistance + additionalDistance));
-            Debug.Log("≤øº˛Ω‚À¯≥…π¶: " + gameObject.name);
+            if (unlockOrder == 5)
+                LubanController.Instance.OnPuzzleCompleted();
         }
         else
         {
@@ -78,7 +87,7 @@ public class LubanPart : MonoBehaviour
         isDragging = false;
     }
 
-    System.Collections.IEnumerator ShakeFeedback()
+    IEnumerator ShakeFeedback()
     {
         Vector3 originalPos = transform.position;
         float t = 0f;
@@ -91,20 +100,7 @@ public class LubanPart : MonoBehaviour
         transform.position = originalPos;
     }
 
-    void ShowErrorColor()
-    {
-        if (rend != null)
-            rend.material.color = Color.red;
-    }
-
-    void ResetColor()
-    {
-        if (rend != null)
-            rend.material.color = originalColor;
-    }
-
-    // —ÿ◊≈’˝»∑∑ΩœÚ∆Ωª¨“∆∂Ø
-    System.Collections.IEnumerator MoveInDirection(Vector3 direction, float targetDistance)
+    IEnumerator MoveInDirection(Vector3 direction, float targetDistance)
     {
         Vector3 startPos = transform.position;
         Vector3 targetPos = startPos + direction.normalized * targetDistance;
@@ -118,7 +114,44 @@ public class LubanPart : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, targetPos, fractionOfJourney);
             yield return null;
         }
-
-        transform.position = targetPos;  // »∑±£◊Ó∫Ûæ´»∑µΩƒø±ÍŒª÷√
+        transform.position = targetPos;
     }
+
+    public void StartReturnToOrigin()
+    {
+        StartCoroutine(ReturnToOrigin());
+    }
+
+    IEnumerator ReturnToOrigin()
+    {
+        Vector3 startPos = transform.localPosition;
+        float time = 0;
+        float duration = 1.2f;
+
+        // ÂÖàÊâßË°å Lerp Âä®Áîª
+        while (time < duration)
+        {
+            transform.localPosition = Vector3.Lerp(startPos, originalPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        // Âä®ÁîªÁªìÊùüÂêéÔºåÂº∫Âà∂‰øÆÊ≠£‰ΩçÁΩÆÔºàÈÅøÂÖçÊµÆÁÇπËØØÂ∑ÆÔºâ
+        transform.localPosition = originalPosition;
+        OnReturnedToOrigin?.Invoke();
+    }
+
+    public void ForceReturnToOrigin()
+    {
+        transform.localPosition = originalPosition;
+
+    }
+
+    public static void ResetLock()
+    {
+        currentUnlockOrder = 1;
+    }
+
+    void ShowErrorColor() => rend.material.color = Color.red;
+    void ResetColor() => rend.material.color = originalColor;
 }

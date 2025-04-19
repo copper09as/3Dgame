@@ -15,6 +15,7 @@ public class PlayerJump : PlayerState
     {
         animator.SetBool("IsJumping", true);
         cooldownTimer = jumpCooldown; // 初始化冷却计时器
+        Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.downGravity, 0);
     }
 
     public override void Exit()
@@ -24,6 +25,7 @@ public class PlayerJump : PlayerState
 
     public override void Update()
     {
+
         if (cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;

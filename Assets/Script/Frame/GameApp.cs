@@ -15,6 +15,7 @@ public class GameApp : MonoSingleTon<GameApp>
     public GameData gameData;
     public TaskManager taskManager;
     public PlayerData playerData;
+    
     protected override void Awake()
     {
         base.Awake();

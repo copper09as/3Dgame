@@ -37,8 +37,15 @@ private float smoothTime = 0.1f;
         direction *= moveSpeed;
         direction.y = 0f;
         stateMachine.player.Move(direction);
-
-
+        if(stateMachine.player.IsGrounded())
+        {
+            Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.Gravity, 0);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.downGravity*6, 0);
+        }
+        Debug.Log(Physics.gravity);
         if (Input.GetKeyDown(KeyCode.Space) && stateMachine.player.IsGrounded())
         {
             rb.AddForce(Vector3.up * GameApp.Instance.playerData.jumpHight, ForceMode.Impulse);

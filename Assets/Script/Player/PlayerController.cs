@@ -37,9 +37,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        stateMachine.Update();
     }
     public bool inWater = false;
     public bool IsGrounded() => isGrounded;
@@ -48,6 +46,9 @@ public class PlayerController : MonoBehaviour
     public GameObject GetBird() => flyBird;
     private void FixedUpdate()
     {
+        horizontal = Input.GetAxis("Horizontal");
+        
+        stateMachine.Update();
         UpdateGroundedStatus();
     }
     public bool IsInWater() => inWater;

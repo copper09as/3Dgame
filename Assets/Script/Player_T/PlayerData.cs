@@ -9,6 +9,7 @@ public class PlayerData
     public float moveSpeed = 6f;
     public float runSpeed = 12f;
     public float jumpHight = 50f;
-    public float flyGravity = 100f;
-    public float Gravity = 500f;
+    public float flyGravity = 3f;
+    public float downGravity = 25f;
+    public float Gravity = 9.8f;
 }

@@ -13,21 +13,35 @@ public class PlayerFly : PlayerState
     }
     public override void Enter()
     {
-        Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.flyGravity, 0);
         stateMachine.player.GetBird().SetActive(true);
         animator.SetBool("IsFlying", true);
     }
 
     public override void Exit()
     {
-        Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.Gravity, 0);
         stateMachine.player.GetBird().SetActive(false);
         animator.SetBool("IsFlying", false);
     }
     public override void Update()
     {
-        base.Update();
-        if(stateMachine.player.IsGrounded() || Input.GetKeyDown(KeyCode.Space))
+        float horizontal = Input.GetAxis("Horizontal");
+
+        float vertical = Input.GetAxis("Vertical");
+        Physics.gravity = new Vector3(0, -GameApp.Instance.playerData.flyGravity, 0);
+        Vector3 direction = stateMachine.player.transform.forward * vertical;
+        direction += stateMachine.player.transform.right * horizontal;
+        direction.Normalize();
+        magnitude = direction.magnitude;
+        direction *= moveSpeed*3f;
+        direction.y = 0f;
+        stateMachine.player.Move(direction);
+       
+        if (stateMachine.player.IsInWater())
+        {
+            stateMachine.TransState(playerState.Idle);
+            stateMachine.TransState(playerState.Swim);
+        }
+        if (stateMachine.player.IsGrounded() || Input.GetKeyDown(KeyCode.Space))
         {
             stateMachine.TransState(playerState.Idle);
         }
